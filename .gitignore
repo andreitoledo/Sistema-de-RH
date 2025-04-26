@@ -1,0 +1,43 @@
+# Ignore node_modules em qualquer lugar
+**/node_modules/
+
+# Ignore pastas de build
+**/dist/
+**/build/
+
+# Ignore arquivos .env (variáveis de ambiente sensíveis)
+**/.env
+**/.env.*
+
+# Ignore caches de ferramentas
+**/.turbo/
+**/.next/
+**/.cache/
+
+# Ignore arquivos de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ignore arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignore pastas do Vite
+**/.vite/
+
+# Ignore coverage de testes
+**/coverage/
+
+# Ignore output do prisma
+**/prisma/migrations/
+
+# Ignore IDEs/editores (opcional)
+.vscode/
+.idea/
+
+# Permitir comitar backend e frontend
+!backend/
+!frontend/
