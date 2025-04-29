@@ -27,5 +27,18 @@ model Employee {
   hiredAt     DateTime
   status      Boolean  @default(true)
   createdAt   DateTime @default(now())
+
+  vacations   Vacation[] 
 }
+
+model Vacation {
+  id           Int      @id @default(autoincrement())
+  employeeId   Int
+  employee     Employee @relation(fields: [employeeId], references: [id])
+  startDate    DateTime
+  endDate      DateTime
+  status       String   @default("pending") // pending | approved | rejected
+  createdAt    DateTime @default(now())
+}
+
 
