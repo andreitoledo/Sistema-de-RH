@@ -65,4 +65,17 @@
     border: none;
     margin-left: 1rem;
   }
+
+  /* Adicione ao final do modal.css */
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
   

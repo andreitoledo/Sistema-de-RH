@@ -7,6 +7,9 @@ import CrudModal from '../components/CrudModal';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
+
 interface Employee {
   id?: number;
   name: string;
@@ -85,7 +88,7 @@ export default function Employees() {
       }
     });
   }
-  
+
 
   return (
     <div>
@@ -131,8 +134,25 @@ export default function Employees() {
                 <button onClick={() => {
                   setSelectedEmployee(emp);
                   setModalOpen(true);
-                }}>Editar</button>
-                <button onClick={() => handleDelete(emp.id!)}>Excluir</button>
+                }} title="Editar" style={{
+                  backgroundColor: '#007bff',
+                  color: 'white',
+                  border: 'none',
+                  padding: '6px',
+                  marginRight: '6px',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}><FaEdit /></button>
+                <button onClick={() => handleDelete(emp.id!)} title="Excluir" style={{
+                  backgroundColor: '#dc3545',
+                  color: 'white',
+                  border: 'none',
+                  padding: '6px',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}>
+                  <FaTrash />
+                </button>
               </td>
             </tr>
           ))}

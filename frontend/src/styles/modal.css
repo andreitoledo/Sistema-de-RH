@@ -56,4 +56,43 @@
   .modal button:hover {
     background: #0097a7;
   }
+
+  /* modal.css */
+
+.Modal {
+  background: #1e1e1e;
+  padding: 30px;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.Overlay {
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Este estilo evita que o conteúdo do modal escondido quebre o tab */
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
   
