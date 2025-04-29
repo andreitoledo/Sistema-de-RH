@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import api from '../services/api';
 import CrudModal from '../components/CrudModal';
 
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+
 interface Employee {
   id?: number;
   name: string;
@@ -36,38 +39,53 @@ export default function Employees() {
     if (selectedEmployee) {
       api.put(`/employees/${selectedEmployee.id}`, data)
         .then(() => {
+          toast.success('Funcionário atualizado com sucesso.');
           loadEmployees();
           setModalOpen(false);
           setSelectedEmployee(undefined);
         })
         .catch(err => {
-          alert('Erro ao salvar funcionário.');
+          toast.success('Erro ao salvar funcionário.');
           console.error(err);
         });
     } else {
       api.post('/employees', { ...data, status: true })
         .then(() => {
+          toast.success('Funcionário cadastrado com sucesso.');
           loadEmployees();
           setModalOpen(false);
           setSelectedEmployee(undefined);
         })
         .catch(err => {
-          alert('Erro ao salvar funcionário.');
+          toast.success('Erro ao salvar funcionário.');
           console.error(err);
         });
     }
   }
 
   function handleDelete(id: number) {
-    if (confirm('Tem certeza que deseja excluir este funcionário?')) {
-      api.delete(`/employees/${id}`)
-        .then(loadEmployees)
-        .catch(err => {
-          alert('Erro ao excluir funcionário.');
-          console.error(err);
-        });
-    }
+    Swal.fire({
+      title: 'Tem certeza?',
+      text: 'Deseja realmente excluir este funcionário?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, excluir',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        api.delete(`/employees/${id}`)
+          .then(() => {
+            toast.success('Funcionário excluído com sucesso.');
+            loadEmployees();
+          })
+          .catch(err => {
+            toast.error('Erro ao excluir funcionário.');
+            console.error(err);
+          });
+      }
+    });
   }
+  
 
   return (
     <div>

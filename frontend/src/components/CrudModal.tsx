@@ -27,6 +27,12 @@ export default function CrudModal({ isOpen, onClose, onSave, initialData, title 
   });
 
   useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        document.querySelector('input[name="name"]')?.focus();
+      }, 100);
+    }
+
     if (initialData) {
       setForm({
         ...initialData,
@@ -46,7 +52,7 @@ export default function CrudModal({ isOpen, onClose, onSave, initialData, title 
         hiredAt: ''
       });
     }
-  }, [initialData]);
+  }, [initialData, isOpen]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -67,8 +73,7 @@ export default function CrudModal({ isOpen, onClose, onSave, initialData, title 
     onSave(data);
   }
 
-  return (
-    //<Modal isOpen={isOpen} onRequestClose={onClose} className="Modal" overlayClassName="Overlay">
+  return (    
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
