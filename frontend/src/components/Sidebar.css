@@ -1,27 +1,22 @@
+/* src/components/Sidebar.css */
+
+.layout {
+  display: flex;
+}
+
 .sidebar {
-    width: 220px;
-    background: #20232a;
-    color: #fff;
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-  }
-  
-  .sidebar h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin-bottom: 10px;
-  }
-  
-  .sidebar a {
-    color: #61dafb;
-    text-decoration: none;
-  }
-  
+  width: 200px;
+  background-color: #1a1a1a;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 1rem;
+  width: calc(100% - 200px);
+}
