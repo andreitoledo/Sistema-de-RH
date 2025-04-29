@@ -5,22 +5,17 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // 🔥 Libera o CORS para o frontend
+  app.enableCors({
+    origin: 'http://localhost:5173',
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Selene RH API')
     .setDescription('Documentação oficial das APIs de RH')
     .setVersion('1.0')
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'Authorization',
-        in: 'header',
-      },
-      'Authorization', // <- importante: nome da configuração
-    )
+    .addBearerAuth()
     .build();
-
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
