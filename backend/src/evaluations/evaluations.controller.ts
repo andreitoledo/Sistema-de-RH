@@ -4,7 +4,7 @@ import { CreateEvaluationDto } from './dto/create-evaluation.dto';
 import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Evaluations')
+@ApiTags('Avaliações de Funcionários')
 @Controller('evaluations')
 export class EvaluationsController {
   constructor(private readonly evaluationsService: EvaluationsService) {}

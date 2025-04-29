@@ -4,7 +4,7 @@ import { CreateVacationDto } from './dto/create-vacation.dto';
 import { UpdateVacationDto } from './dto/update-vacation.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Vacations')
+@ApiTags('Férias')
 @Controller('vacations')
 export class VacationsController {
   constructor(private readonly vacationsService: VacationsService) {}
