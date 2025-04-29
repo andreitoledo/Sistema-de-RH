@@ -73,6 +73,15 @@ model Application {
   createdAt    DateTime @default(now())
 }
 
+model Announcement {
+  id        Int      @id @default(autoincrement())
+  title     String
+  message   String
+  audience  String   // ex: "todos", "TI", "RH"
+  createdAt DateTime @default(now())
+}
+
+
 
 
 

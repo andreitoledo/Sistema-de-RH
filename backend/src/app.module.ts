@@ -7,9 +7,10 @@ import { VacationsModule } from './vacations/vacations.module';
 import { EvaluationsModule } from './evaluations/evaluations.module';
 import { JobsModule } from './jobs/jobs.module';
 import { ApplicationsModule } from './applications/applications.module';
+import { AnnouncementsModule } from './announcements/announcements.module';
 
 @Module({
-  imports: [AuthModule, EmployeesModule, VacationsModule, EvaluationsModule, JobsModule, ApplicationsModule], // <-- adiciona aqui
+  imports: [AuthModule, EmployeesModule, VacationsModule, EvaluationsModule, JobsModule, ApplicationsModule, AnnouncementsModule], // <-- adiciona aqui
   controllers: [AppController],
   providers: [AppService],
 })
