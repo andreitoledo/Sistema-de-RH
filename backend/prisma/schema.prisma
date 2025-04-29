@@ -29,6 +29,7 @@ model Employee {
   createdAt   DateTime @default(now())
 
   vacations   Vacation[] 
+  evaluations Evaluation[]
 }
 
 model Vacation {
@@ -40,5 +41,16 @@ model Vacation {
   status       String   @default("pending") // pending | approved | rejected
   createdAt    DateTime @default(now())
 }
+
+model Evaluation {
+  id           Int       @id @default(autoincrement())
+  employeeId   Int
+  employee     Employee  @relation(fields: [employeeId], references: [id])
+  evaluationDate DateTime
+  score        Int
+  comments     String
+  createdAt    DateTime  @default(now())
+}
+
 
 
