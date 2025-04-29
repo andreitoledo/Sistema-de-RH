@@ -7,8 +7,7 @@ import CrudModal from '../components/CrudModal';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
-import { FaEdit, FaTrash } from 'react-icons/fa';
-
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 
 interface Employee {
   id?: number;
@@ -93,10 +92,13 @@ export default function Employees() {
   return (
     <div>
       <h2>Funcionários</h2>
-      <button onClick={() => {
-        setSelectedEmployee(undefined);
-        setModalOpen(true);
-      }}>
+      <button
+        className="fab-button"
+        title="Novo Funcionário"
+        onClick={() => {
+          setSelectedEmployee(undefined);
+          setModalOpen(true);
+        }}>
         Novo Funcionário
       </button>
 
