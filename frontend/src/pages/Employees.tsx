@@ -1,9 +1,11 @@
+// src/pages/Employees.tsx
+
 import { useEffect, useState } from 'react';
 import api from '../services/api';
-import EmployeeFormModal from '../components/EmployeeFormModal';
+import CrudModal from '../components/CrudModal';
 
 interface Employee {
-  id: number;
+  id?: number;
   name: string;
   position: string;
   department: string;
@@ -12,54 +14,83 @@ interface Employee {
   salary: number;
   birthday: string;
   hiredAt: string;
-  status: boolean;
+  status?: boolean;
 }
 
 export default function Employees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editing, setEditing] = useState<Employee | null>(null);
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | undefined>(undefined);
 
   function loadEmployees() {
     api.get<Employee[]>('/employees')
-      .then((res) => setEmployees(res.data))
-      .catch((err) => console.error('Erro ao carregar funcionários:', err));
+      .then(res => setEmployees(res.data))
+      .catch(err => console.error('Erro ao carregar funcionários:', err));
   }
 
   useEffect(() => {
     loadEmployees();
   }, []);
 
-  function handleNovo() {
-    setEditing(null);
-    setModalOpen(true);
+  function handleSave(data: Employee) {
+    if (selectedEmployee) {
+      api.put(`/employees/${selectedEmployee.id}`, data)
+        .then(() => {
+          loadEmployees();
+          setModalOpen(false);
+          setSelectedEmployee(undefined);
+        })
+        .catch(err => {
+          alert('Erro ao salvar funcionário.');
+          console.error(err);
+        });
+    } else {
+      api.post('/employees', { ...data, status: true })
+        .then(() => {
+          loadEmployees();
+          setModalOpen(false);
+          setSelectedEmployee(undefined);
+        })
+        .catch(err => {
+          alert('Erro ao salvar funcionário.');
+          console.error(err);
+        });
+    }
   }
 
-  async function handleDelete(id: number) {
-    if (confirm('Deseja excluir este funcionário?')) {
-      try {
-        await api.delete(`/employees/${id}`);
-        loadEmployees();
-      } catch (err) {
-        alert('Erro ao excluir funcionário');
-        console.error(err);
-      }
+  function handleDelete(id: number) {
+    if (confirm('Tem certeza que deseja excluir este funcionário?')) {
+      api.delete(`/employees/${id}`)
+        .then(loadEmployees)
+        .catch(err => {
+          alert('Erro ao excluir funcionário.');
+          console.error(err);
+        });
     }
   }
 
   return (
     <div>
       <h2>Funcionários</h2>
-      <button onClick={handleNovo}>Novo Funcionário</button>
+      <button onClick={() => {
+        setSelectedEmployee(undefined);
+        setModalOpen(true);
+      }}>
+        Novo Funcionário
+      </button>
 
-      <EmployeeFormModal
+      <CrudModal
         isOpen={modalOpen}
-        onRequestClose={() => setModalOpen(false)}
-        onSuccess={loadEmployees}
-        editingEmployee={editing}
+        onClose={() => {
+          setModalOpen(false);
+          setSelectedEmployee(undefined);
+        }}
+        onSave={handleSave}
+        initialData={selectedEmployee}
+        title={selectedEmployee ? 'Editar Funcionário' : 'Novo Funcionário'}
       />
 
-      <table border={1} cellPadding={10} cellSpacing={0} style={{ marginTop: '1rem' }}>
+      <table border={1} cellPadding={10} cellSpacing={0}>
         <thead>
           <tr>
             <th>Nome</th>
@@ -71,7 +102,7 @@ export default function Employees() {
           </tr>
         </thead>
         <tbody>
-          {employees.map((emp) => (
+          {employees.map(emp => (
             <tr key={emp.id}>
               <td>{emp.name}</td>
               <td>{emp.position}</td>
@@ -79,8 +110,11 @@ export default function Employees() {
               <td>{emp.email}</td>
               <td>{emp.phone}</td>
               <td>
-                <button onClick={() => { setEditing(emp); setModalOpen(true); }}>Editar</button>
-                <button onClick={() => handleDelete(emp.id)} style={{ marginLeft: 10 }}>Excluir</button>
+                <button onClick={() => {
+                  setSelectedEmployee(emp);
+                  setModalOpen(true);
+                }}>Editar</button>
+                <button onClick={() => handleDelete(emp.id!)}>Excluir</button>
               </td>
             </tr>
           ))}
