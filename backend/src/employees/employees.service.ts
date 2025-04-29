@@ -23,13 +23,13 @@ export class EmployeesService {
     });
   }
 
-  async update(id: number, data: UpdateEmployeeDto) {
+  async update(id: number, dto: UpdateEmployeeDto) {
     return prisma.employee.update({
       where: { id },
-      data,
+      data: dto,
     });
   }
-
+  
   async remove(id: number) {
     return prisma.employee.delete({
       where: { id },

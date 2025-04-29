@@ -9,11 +9,16 @@ interface Employee {
   department: string;
   email: string;
   phone: string;
+  salary: number;
+  birthday: string;
+  hiredAt: string;
+  status: boolean;
 }
 
 export default function Employees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [editing, setEditing] = useState<Employee | null>(null);
 
   function loadEmployees() {
     api.get<Employee[]>('/employees')
@@ -25,18 +30,36 @@ export default function Employees() {
     loadEmployees();
   }, []);
 
+  function handleNovo() {
+    setEditing(null);
+    setModalOpen(true);
+  }
+
+  async function handleDelete(id: number) {
+    if (confirm('Deseja excluir este funcionário?')) {
+      try {
+        await api.delete(`/employees/${id}`);
+        loadEmployees();
+      } catch (err) {
+        alert('Erro ao excluir funcionário');
+        console.error(err);
+      }
+    }
+  }
+
   return (
     <div>
       <h2>Funcionários</h2>
-      <button onClick={() => setModalOpen(true)}>Novo Funcionário</button>
+      <button onClick={handleNovo}>Novo Funcionário</button>
 
       <EmployeeFormModal
         isOpen={modalOpen}
         onRequestClose={() => setModalOpen(false)}
         onSuccess={loadEmployees}
+        editingEmployee={editing}
       />
 
-      <table border={1} cellPadding={10} cellSpacing={0}>
+      <table border={1} cellPadding={10} cellSpacing={0} style={{ marginTop: '1rem' }}>
         <thead>
           <tr>
             <th>Nome</th>
@@ -44,6 +67,7 @@ export default function Employees() {
             <th>Departamento</th>
             <th>Email</th>
             <th>Telefone</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +78,10 @@ export default function Employees() {
               <td>{emp.department}</td>
               <td>{emp.email}</td>
               <td>{emp.phone}</td>
+              <td>
+                <button onClick={() => { setEditing(emp); setModalOpen(true); }}>Editar</button>
+                <button onClick={() => handleDelete(emp.id)} style={{ marginLeft: 10 }}>Excluir</button>
+              </td>
             </tr>
           ))}
         </tbody>

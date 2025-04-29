@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
@@ -24,9 +24,9 @@ export class EmployeesController {
     return this.employeesService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateEmployeeDto: UpdateEmployeeDto) {
-    return this.employeesService.update(id, updateEmployeeDto);
+  @Put(':id') // <== Adicione essa rota!
+  update(@Param('id') id: string, @Body() dto: UpdateEmployeeDto) {
+    return this.employeesService.update(+id, dto);
   }
 
   @Delete(':id')
