@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
+import EmployeeFormModal from '../components/EmployeeFormModal';
 
 interface Employee {
   id: number;
@@ -12,22 +13,28 @@ interface Employee {
 
 export default function Employees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
+  function loadEmployees() {
     api.get<Employee[]>('/employees')
       .then((res) => setEmployees(res.data))
       .catch((err) => console.error('Erro ao carregar funcionários:', err));
+  }
+
+  useEffect(() => {
+    loadEmployees();
   }, []);
 
   return (
     <div>
       <h2>Funcionários</h2>
-      <button
-        style={{ marginBottom: '20px' }}
-        onClick={() => alert('Abrir modal/cadastro')}
-      >
-        Novo Funcionário
-      </button>
+      <button onClick={() => setModalOpen(true)}>Novo Funcionário</button>
+
+      <EmployeeFormModal
+        isOpen={modalOpen}
+        onRequestClose={() => setModalOpen(false)}
+        onSuccess={loadEmployees}
+      />
 
       <table border={1} cellPadding={10} cellSpacing={0}>
         <thead>
