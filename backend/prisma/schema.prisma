@@ -14,3 +14,18 @@ model User {
   role      String
   createdAt DateTime @default(now())
 }
+
+model Employee {
+  id          Int      @id @default(autoincrement())
+  name        String
+  position    String
+  department  String
+  salary      Float
+  phone       String
+  email       String   @unique
+  birthday    DateTime
+  hiredAt     DateTime
+  status      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
