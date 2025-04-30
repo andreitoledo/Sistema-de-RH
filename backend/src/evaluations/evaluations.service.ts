@@ -27,11 +27,15 @@ export class EvaluationsService {
   }
 
   async update(id: number, data: UpdateEvaluationDto) {
+    // Remover campos que não devem ser enviados ao Prisma
+    const { id: _, employee, ...cleanData } = data as any;
+    console.log('Atualizando avaliação:', cleanData);
     return prisma.evaluation.update({
       where: { id },
-      data,
+      data: cleanData,
     });
   }
+  
 
   async remove(id: number) {
     return prisma.evaluation.delete({

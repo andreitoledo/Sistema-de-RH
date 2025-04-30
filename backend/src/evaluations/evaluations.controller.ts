@@ -25,8 +25,8 @@ export class EvaluationsController {
   }
 
   @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateEvaluationDto: UpdateEvaluationDto) {
-    return this.evaluationsService.update(id, updateEvaluationDto);
+  update(@Param('id') id: number, @Body() updateEvaluationDto: UpdateEvaluationDto) {
+    return this.evaluationsService.update(+id, updateEvaluationDto);
   }
 
   @Delete(':id')

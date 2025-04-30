@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import Employees from '../pages/Employees';
 import Vacations from '../pages/Vacations';
+import Evaluations from '../pages/Evaluations';
 import DefaultLayout from '../layouts/DefaultLayout';
 
 export default function AppRoutes() {
@@ -11,6 +12,7 @@ export default function AppRoutes() {
         <Route path="/" element={<DefaultLayout><Dashboard /></DefaultLayout>} />
         <Route path="/employees" element={<DefaultLayout><Employees /></DefaultLayout>} />
         <Route path="/vacations" element={<DefaultLayout><Vacations /></DefaultLayout>} />
+        <Route path="/evaluations" element={<DefaultLayout><Evaluations /></DefaultLayout>} />
       </Routes>
     </BrowserRouter>
   );
