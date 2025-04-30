@@ -1,2 +1,222 @@
-# Sistema-de-RH
-Sistema para gerenciar o setor de Recursos Humanos
+# 🧠 RH System
+
+Sistema completo de Gestão de RH com controle de funcionários, férias, avaliações, recrutamento, comunicados e relatórios.
+
+---
+
+## 📦 Tecnologias Utilizadas
+
+- **Backend:** NestJS + Prisma + PostgreSQL
+- **Frontend:** React + Vite + TypeScript
+- **ORM:** Prisma
+- **Banco de dados:** PostgreSQL
+
+---
+
+## 🔧 Pré-requisitos
+
+Antes de rodar o projeto, certifique-se de ter instalado:
+
+- Node.js (v18 ou superior)
+- PostgreSQL (crie um banco vazio com nome `rh_db`)
+- Git
+- npm ou yarn
+
+---
+
+## 🚀 Como rodar o projeto localmente
+
+### 📁 1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/selene-rh-system.git
+cd selene-rh-system
+
+## ⚙️ 2. Backend (NestJS)
+
+cd backend
+npm install
+
+### ✅ Configure o .env
+### Crie o arquivo .env com o conteúdo abaixo:
+
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/rh_db"
+JWT_SECRET=seusecretkey
+
+### ⚙️ Execute as migrations e gere o client do Prisma:
+
+npx prisma migrate dev
+npx prisma generate
+
+### 🚀 Inicie o servidor:
+
+npm run start:dev
+
+Acesse a API via: http://localhost:3000/api
+
+### 💻 3. Frontend (React + Vite)
+
+cd ../frontend
+npm install
+npm run dev
+
+Acesse o frontend via: http://localhost:5173
+
+---
+
+## 🐳 Como rodar com Docker (opcional)
+
+Se preferir rodar o sistema com Docker, siga os passos abaixo:
+
+### 📁 1. Estrutura esperada
+selene-rh-system/
+├── backend/
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── .env
+├── frontend/
+│   ├── Dockerfile
+
+### 🧩 2. Arquivos necessários
+
+📄 backend/Dockerfile  
+
+---
+
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+RUN npx prisma generate
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start:dev"]
+---
+
+📄 frontend/Dockerfile
+
+---
+
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
+
+---
+
+📄 backend/docker-compose.yml
+
+---
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: rh_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rh_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: rh_backend
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/rh_db
+      JWT_SECRET: supersecret
+
+  frontend:
+    build:
+      context: ../frontend
+    container_name: rh_frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:3000
+
+volumes:
+  pgdata:
+---
+
+### ▶️ 3. Subir os containers
+Dentro da pasta backend, rode:
+
+docker-compose up --build
+
+### ✅ Acesso
+Frontend: http://localhost:5173
+
+Backend (Swagger): http://localhost:3000/api
+
+Banco de dados PostgreSQL: localhost:5432
+Usuário: postgres
+Senha: postgres
+Banco: rh_db
+
+### 🧠 Dica extra: Migrations no Docker
+
+### O Prisma precisa rodar as migrations dentro do container backend:
+
+docker exec -it rh_backend sh
+npx prisma migrate dev
+
+## 🛠 Funcionalidades
+
+✅ CRUD de Funcionários
+
+✅ CRUD de Férias
+
+✅ CRUD de Avaliações
+
+✅ CRUD de Vagas e Candidaturas
+
+✅ CRUD de Comunicados
+
+✅ Relatórios dinâmicos (aniversariantes, férias próximas, etc.)
+
+✅ Autenticação com JWT (temporariamente desabilitada para desenvolvimento)
+
+### 🧪 Testando com Swagger
+
+http://localhost:3000/api
+
+Você pode autenticar com o token gerado no login (/auth/login) e testar as rotas protegidas.
+
+### 🗂 Estrutura do Projeto
+
+selene-rh-system/
+├── backend/         # NestJS + Prisma
+│   ├── src/
+│   └── prisma/
+├── frontend/        # React + Vite
+│   ├── src/
+│   └── public/
+
+## 📫 Contato
+Andrei Toledo
+andreitoledo_dev@hotmail.com
