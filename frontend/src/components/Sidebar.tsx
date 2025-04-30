@@ -6,7 +6,7 @@ export default function Sidebar() {
   return (
     <div className="layout">
       <nav className="sidebar">
-        <h2>Selene RH</h2>
+        <h2>Sistema RH</h2>
         <ul>
           <li><a href="/employees">Funcionários</a></li>
           <li><a href="/vacations">Férias</a></li>
