@@ -4,6 +4,7 @@ import Employees from '../pages/Employees';
 import Vacations from '../pages/Vacations';
 import Evaluations from '../pages/Evaluations';
 import Jobs from '../pages/Jobs';
+import Announcements from '../pages/Announcements';
 import DefaultLayout from '../layouts/DefaultLayout';
 
 export default function AppRoutes() {
@@ -15,6 +16,7 @@ export default function AppRoutes() {
         <Route path="/vacations" element={<DefaultLayout><Vacations /></DefaultLayout>} />
         <Route path="/evaluations" element={<DefaultLayout><Evaluations /></DefaultLayout>} />
         <Route path="/jobs" element={<DefaultLayout><Jobs /></DefaultLayout>} />
+        <Route path="/announcements" element={<DefaultLayout><Announcements /></DefaultLayout>} />
       </Routes>
     </BrowserRouter>
   );
