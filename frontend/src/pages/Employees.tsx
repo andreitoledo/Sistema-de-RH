@@ -93,13 +93,13 @@ export default function Employees() {
     <div>
       <h2>Funcionários</h2>
       <button
-        className="fab-button"
+        className="floating-button"
         title="Novo Funcionário"
         onClick={() => {
           setSelectedEmployee(undefined);
           setModalOpen(true);
         }}>
-        Novo Funcionário
+        +
       </button>
 
       <CrudModal
@@ -136,25 +136,9 @@ export default function Employees() {
                 <button onClick={() => {
                   setSelectedEmployee(emp);
                   setModalOpen(true);
-                }} title="Editar" style={{
-                  backgroundColor: '#007bff',
-                  color: 'white',
-                  border: 'none',
-                  padding: '6px',
-                  marginRight: '6px',
-                  borderRadius: '4px',
-                  cursor: 'pointer'
-                }}><FaEdit /></button>
-                <button onClick={() => handleDelete(emp.id!)} title="Excluir" style={{
-                  backgroundColor: '#dc3545',
-                  color: 'white',
-                  border: 'none',
-                  padding: '6px',
-                  borderRadius: '4px',
-                  cursor: 'pointer'
-                }}>
-                  <FaTrash />
-                </button>
+                }} className="icon-button blue">✏️</button>
+
+                <button onClick={() => handleDelete(emp.id!)} className="icon-button red">🗑️</button>
               </td>
             </tr>
           ))}
