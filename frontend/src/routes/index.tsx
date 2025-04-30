@@ -13,6 +13,7 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DefaultLayout><Dashboard /></DefaultLayout>} />
+        <Route path="/dashboard" element={<DefaultLayout><Dashboard /></DefaultLayout>} />
         <Route path="/employees" element={<DefaultLayout><Employees /></DefaultLayout>} />
         <Route path="/vacations" element={<DefaultLayout><Vacations /></DefaultLayout>} />
         <Route path="/evaluations" element={<DefaultLayout><Evaluations /></DefaultLayout>} />

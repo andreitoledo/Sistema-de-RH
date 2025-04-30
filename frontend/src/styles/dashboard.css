@@ -1,0 +1,67 @@
+/* src/styles/dashboard.css */
+
+.dashboard-container {
+  padding: 2rem;
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.chart-wrapper {
+  background-color: #1e1e1e;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.2);
+  width: 100%;
+  max-width: 900px;
+}
+
+@media (max-width: 768px) {
+  .chart-wrapper {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: #222;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 180px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}
+
+.card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: yellow;
+}
+

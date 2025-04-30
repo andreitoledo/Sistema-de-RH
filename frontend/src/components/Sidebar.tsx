@@ -1,13 +1,18 @@
 // src/components/Sidebar.tsx
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
+import logo from '../images/logo_sistema_rh.jpg';
 
 export default function Sidebar() {
   return (
     <div className="layout">
       <nav className="sidebar">
-        <h2>Sistema RH</h2>
+        <div className="logo-container">
+          <img src={logo} alt="Logo do Sistema RH" className="sidebar-logo" />
+        </div>
+
         <ul>
+          <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/employees">Funcionários</a></li>
           <li><a href="/vacations">Férias</a></li>
           <li><Link to="/evaluations">Avaliações</Link></li>
