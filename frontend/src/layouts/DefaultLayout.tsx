@@ -9,10 +9,12 @@ interface Props {
 
 export default function DefaultLayout({ children }: Props) {
   return (
-    <>
+    <div className="layout-container">
       <Sidebar />
-      <Header />
-      <main className="content">{children}</main>
-    </>
+      <main className="main-content">
+        <Header />
+        {children}
+      </main>
+    </div>
   );
 }

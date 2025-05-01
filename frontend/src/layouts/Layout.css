@@ -1,6 +1,27 @@
-.content {
-    margin-left: 220px;
-    margin-top: 60px;
-    padding: 20px;
+/* src/styles/layout.css */
+
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #121212;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  margin-left: 200px; /* para não ficar embaixo da sidebar fixa */
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
   }
-  
+
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}

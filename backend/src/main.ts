@@ -11,7 +11,7 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Selene RH API')
+    .setTitle('Sistema RH API')
     .setDescription('Documentação oficial das APIs de RH')
     .setVersion('1.0')
     .addBearerAuth()
