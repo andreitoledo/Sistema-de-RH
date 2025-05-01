@@ -272,7 +272,7 @@ Sistema de gerenciamento de recursos humanos com módulos funcionais e interface
 🔐 Login
 Acesse o sistema com segurança utilizando autenticação JWT.
 Faça login com e-mail e senha para obter acesso aos módulos internos.
-![Login](docs/images/image-9.png).
+![Login](https://github.com/andreitoledo/Sistema-de-RH/blob/main/docs/images/image-9.png?raw=true)
 
 🧑‍💼 Funcionários
 Gestão de colaboradores: cadastro, edição, exclusão e listagem.
