@@ -21,6 +21,8 @@
   width: calc(100% - 200px);
 }
 
+/* logo sistema */
+
 .logo-container {
   text-align: center;
   margin-bottom: 2rem;
@@ -33,3 +35,33 @@
   opacity: 0.85;
 }
 
+/* botão logaut */
+
+.sidebar-logout {
+  margin-top: auto;
+  padding: 1rem;
+  border-top: 1px solid #444;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.logout-button:hover {
+  background-color: #333;
+}
+
+.logout-icon {
+  font-size: 1.2rem;
+}

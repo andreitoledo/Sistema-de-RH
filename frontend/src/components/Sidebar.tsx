@@ -24,6 +24,18 @@ export default function Sidebar() {
       <main className="content">
         {/* O conteúdo principal será renderizado aqui */}
       </main>
+
+      <div className="sidebar-logout">
+        <button
+          className="logout-button"
+          onClick={() => {
+            localStorage.removeItem('token');
+            window.location.href = '/login';
+          }}
+        >
+          <span className="logout-icon">🚪</span> Sair
+        </button>
+      </div>
     </div>
   );
 }

@@ -207,6 +207,55 @@ http://localhost:3000/api
 
 Você pode autenticar com o token gerado no login (/auth/login) e testar as rotas protegidas.
 
+---
+### 🔐 Como realizar o login no sistema
+Para acessar o sistema, siga os passos abaixo:
+
+1. Acesse o Swagger para gerar o token JWT
+Abra o Swagger do backend no navegador:
+
+http://localhost:3000/api
+Localize a rota de autenticação:
+
+POST /auth/login
+Clique em "Try it out", preencha com as credenciais válidas e execute:
+
+{
+  "email": "admin@selene.com",
+  "password": "123456"
+}
+Você receberá uma resposta como esta:
+
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR..."
+}
+2. Copie o token e insira no botão Authorize
+No topo do Swagger, clique no botão Authorize.
+
+Cole o token no seguinte formato:
+
+Bearer SEU_TOKEN_AQUI
+Exemplo:
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Clique em Authorize e depois em Close.
+
+3. Acesse o sistema no navegador
+Abra o frontend:
+
+http://localhost:5173
+Você verá a tela de login do sistema.
+
+Preencha com o mesmo e-mail e senha usados no Swagger:
+
+E-mail: admin@selene.com
+
+Senha: 123456
+
+4. Pronto! 🎉
+Se as credenciais estiverem corretas, você será redirecionado automaticamente para o Dashboard do sistema.
+As próximas requisições autenticadas ao backend utilizarão o token armazenado localmente.
+---
 ### 🗂 Estrutura do Projeto
 
 selene-rh-system/
