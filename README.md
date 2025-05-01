@@ -292,7 +292,7 @@ Gerencie vagas abertas e fechadas para novos candidatos.
 
 📢 Comunicados
 Envie comunicados internos por departamento ou geral.
-![alt text](./frontend/src/image-4.png)
+![alt text](https://github.com/andreitoledo/Sistema-de-RH/frontend/src/images/image-4.png)
 
 📈 Dashboard
 Gráficos e indicadores em tempo real:
