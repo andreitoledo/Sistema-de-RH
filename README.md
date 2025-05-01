@@ -272,48 +272,48 @@ Sistema de gerenciamento de recursos humanos com módulos funcionais e interface
 🔐 Login
 Acesse o sistema com segurança utilizando autenticação JWT.
 Faça login com e-mail e senha para obter acesso aos módulos internos.
-![Login](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-9.png).
+![Login](docs/images/image-9.png).
 
 🧑‍💼 Funcionários
 Gestão de colaboradores: cadastro, edição, exclusão e listagem.
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image.png)
+![Funcionários](docs/images/image.png)
 
 📆 Férias
 Controle completo das férias dos colaboradores, com status e período.
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/stylesimage-1.png)
+![Férias](docs/images/stylesimage-1.png)
 
 📊 Avaliações
 Registre e acompanhe o desempenho com média e comentários de feedback.
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-2.png)
+![Avaliações](docs/images/image-2.png)
 
 💼 Vagas
 Gerencie vagas abertas e fechadas para novos candidatos.
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-3.png)
+![Vagas](docs/images/image-3.png)
 
 📢 Comunicados
 Envie comunicados internos por departamento ou geral.
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-4.png)
+![Comunicações](docs/images/image-4.png)
 
 📈 Dashboard
 Gráficos e indicadores em tempo real:
 
 Aniversariantes por mês
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-5.png)
+![Aniversáriantes](docs/images/image-5.png)
 
 Vagas abertas
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-6.png)
+![Vagas Abertas](docs/images/image-6.png)
 
 Média de avaliações
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-7.png)
+![Avaliações](docs/images/image-7.png)
 
 Férias próximas
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-8.png)
+![Férias](docs/images/image-8.png)
 
 🛰️ API
 Consuma os dados do sistema via endpoints RESTful.
 Acesse a documentação interativa no Swagger para testar e integrar com facilidade.
 
-![alt text](https://github.com/andreitoledo/Sistema-de-RH/blob/main/frontend/src/images/image-10.png)
+![Api Swagger](docs/images/image-10.png)
 
 ## 📫 Contato
 Andrei Toledo
