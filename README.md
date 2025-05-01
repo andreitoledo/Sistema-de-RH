@@ -266,54 +266,6 @@ selene-rh-system/
 │   ├── src/
 │   └── public/
 ---
-### 📸 Visão Geral do Sistema RH Gestão Pro
-Sistema de gerenciamento de recursos humanos com módulos funcionais e interface dark responsiva. Abaixo você confere algumas telas do sistema:
-
-🔐 Login
-Acesse o sistema com segurança utilizando autenticação JWT.
-Faça login com e-mail e senha para obter acesso aos módulos internos.
-![Login](https://github.com/andreitoledo/Sistema-de-RH/blob/main/docs/images/image-9.png?raw=true)
-
-🧑‍💼 Funcionários
-Gestão de colaboradores: cadastro, edição, exclusão e listagem.
-![Funcionários](docs/images/image.png)
-
-📆 Férias
-Controle completo das férias dos colaboradores, com status e período.
-![Férias](docs/images/stylesimage-1.png)
-
-📊 Avaliações
-Registre e acompanhe o desempenho com média e comentários de feedback.
-![Avaliações](docs/images/image-2.png)
-
-💼 Vagas
-Gerencie vagas abertas e fechadas para novos candidatos.
-![Vagas](docs/images/image-3.png)
-
-📢 Comunicados
-Envie comunicados internos por departamento ou geral.
-![Comunicações](docs/images/image-4.png)
-
-📈 Dashboard
-Gráficos e indicadores em tempo real:
-
-Aniversariantes por mês
-![Aniversáriantes](docs/images/image-5.png)
-
-Vagas abertas
-![Vagas Abertas](docs/images/image-6.png)
-
-Média de avaliações
-![Avaliações](docs/images/image-7.png)
-
-Férias próximas
-![Férias](docs/images/image-8.png)
-
-🛰️ API
-Consuma os dados do sistema via endpoints RESTful.
-Acesse a documentação interativa no Swagger para testar e integrar com facilidade.
-
-![Api Swagger](docs/images/image-10.png)
 
 ## 📫 Contato
 Andrei Toledo
